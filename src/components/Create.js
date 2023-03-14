@@ -16,7 +16,7 @@ const Create = () => {
     setTitle("");
     setCategory("");
     setImage("");
-    setPrice();
+    setPrice("");
     setQty("");
   };
 
