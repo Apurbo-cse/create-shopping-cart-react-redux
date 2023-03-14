@@ -1,4 +1,4 @@
-import { ADDED } from "./actionTypes";
+import { ADDED, ADD_TO_CART } from "./actionTypes";
 import initialState from "./initialState";
 
 const nextProductId = (products) => {
@@ -26,6 +26,13 @@ const productReducer =(state = initialState, action) => {
 
             default:
                 return state;
+        
+        case ADD_TO_CART:
+            return {
+                ...state,
+                cartItems: [...state.cartItems, action.payload]
+            }
+
         
     }
 }
