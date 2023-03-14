@@ -18,7 +18,6 @@ const reducer =(state = initialState, action) => {
                     title:action.payload,
                 },
             ];
-            
 
             default:
                 return state;
