@@ -1,7 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ProductCard = ({product}) => {
+  const products = useSelector(state => state.products);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  }
  const {title,category, image, qty} = product;
   return (
   <>
@@ -13,7 +19,7 @@ const ProductCard = ({product}) => {
           <div><small className="text-muted">{category}</small></div>
           <div><small className="text-muted">QTY {qty}</small></div>
         </div>
-        <button class="btn btn-danger mt-2">Add to cart</button>
+        <button class="btn btn-danger mt-2" onAddToCart={() => handleAddToCart(product)}>Add to cart</button>
       </div>
     </div>
   </>
