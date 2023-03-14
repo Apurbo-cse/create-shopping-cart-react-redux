@@ -27,8 +27,12 @@ const Create = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(added(title));
+    dispatch(added(title,category,image,qty));
     setTitle();
+    setCategory();
+    setImage();
+    setQty();
+
   };
 
   return (
