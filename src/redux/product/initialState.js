@@ -7,5 +7,4 @@ const initialState = [
         qty:10,
     }
 ]
-
 export default initialState;

@@ -9,30 +9,14 @@ const Create = () => {
   const [image, setImage] = useState("");
   const [qty, setQty] = useState("");
 
-  const handleInput = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const handleCategory = (e) => {
-    setCategory(e.target.value);
-  };
-
-  const handleImage = (e) => {
-    setImage(e.target.value);
-  };
-
-  const handleQty = (e) => {
-    setQty(e.target.value);
-  };
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(added(title,category,image,qty));
-    setTitle();
-    setCategory();
-    setImage();
-    setQty();
-
+    setTitle('');
+    setCategory('');
+    setImage('');
+    setQty('');
   };
 
   return (
@@ -46,7 +30,7 @@ const Create = () => {
           className="form-control"
           placeholder="Enter a title"
           value={title}
-          onChange={handleInput}
+          onChange={(e) => setTitle(e.target.value)}
         />
 
         <label htmlFor="" className="text-muted mt-2">
@@ -57,7 +41,7 @@ const Create = () => {
           className="form-control"
           placeholder="Enter a category"
           value={category}
-          onChange={handleCategory}
+          onChange={(e) => setCategory(e.target.value)}
         />
 
         <label htmlFor="" className="text-muted mt-2">
@@ -68,7 +52,7 @@ const Create = () => {
           className="form-control"
           placeholder="Enter a image"
           value={image}
-          onChange={handleImage}
+          onChange={(e) => setImage(e.target.value)}
         />
 
         <label htmlFor="" className="text-muted mt-2">
@@ -79,7 +63,7 @@ const Create = () => {
           className="form-control"
           placeholder="Enter a qty"
           value={qty}
-          onChange={handleQty}
+          onChange={(e) => setQty(e.target.value)}
         />
 
         <button type="submit" className="btn  btn-warning w-50 mt-3">
