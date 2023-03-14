@@ -7,16 +7,17 @@ const Create = () => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
   const [qty, setQty] = useState("");
-
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(added(title,category,image,qty));
-    setTitle('');
-    setCategory('');
-    setImage('');
-    setQty('');
+    dispatch(added(title, category, image, price, qty));
+    setTitle("");
+    setCategory("");
+    setImage("");
+    setPrice();
+    setQty("");
   };
 
   return (
@@ -55,16 +56,32 @@ const Create = () => {
           onChange={(e) => setImage(e.target.value)}
         />
 
-        <label htmlFor="" className="text-muted mt-2">
-          QTY
-        </label>
-        <input
-          type="number"
-          className="form-control"
-          placeholder="Enter a qty"
-          value={qty}
-          onChange={(e) => setQty(e.target.value)}
-        />
+        <div className="d-flex justify-content-between">
+          <div className="col-6">
+            <label htmlFor="" className="text-muted mt-2">
+              Price
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Enter price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
+          <div className="col-6">
+            <label htmlFor="" className="text-muted mt-2">
+              QTY
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Enter a qty"
+              value={qty}
+              onChange={(e) => setQty(e.target.value)}
+            />
+          </div>
+        </div>
 
         <button type="submit" className="btn  btn-warning w-50 mt-3">
           Save
