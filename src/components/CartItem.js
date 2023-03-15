@@ -5,7 +5,6 @@ import { removeFromCart, increment, decrement } from "../redux/product/actions";
 const CartItem = ({ product }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(product.cartQty);
-  const { qty } = product;
   const handleRemoveFromCart = () => {
     dispatch(removeFromCart(product.id));
   };
