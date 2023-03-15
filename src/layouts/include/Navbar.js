@@ -1,13 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Navbar = ({ props }) => {
+const Navbar = () => {
+  // const cartCount = useSelector((state) => state.cart.length);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-white py-2 shadow-sm">
         <div className="container">
           <NavLink className="navbar-brand fw-bold fs-4" to="/">
-            Shopping Cart
+            শপিং কার্ট
           </NavLink>
           <button
             className="navbar-toggler"
@@ -24,7 +27,7 @@ const Navbar = ({ props }) => {
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/">
-                  Home
+                  হোম
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -33,7 +36,7 @@ const Navbar = ({ props }) => {
                   aria-current="page"
                   to="/products"
                 >
-                  Products
+                  পণ্য
                 </NavLink>
               </li>
 
@@ -43,7 +46,7 @@ const Navbar = ({ props }) => {
                   aria-current="page"
                   to="/about"
                 >
-                  About
+                  আমাদের সম্পর্কে
                 </NavLink>
               </li>
 
@@ -53,20 +56,20 @@ const Navbar = ({ props }) => {
                   aria-current="page"
                   to="/contact"
                 >
-                  Contact
+                  যোগাযোগ
                 </NavLink>
               </li>
             </ul>
 
-            <NavLink to={'/cart'} className="buttons">
-              <button type="button" class="btn btn-dark position-relative">
-                Cart
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  1
-                  <span class="visually-hidden">unread messages</span>
+            <NavLink to={"/cart"} className="buttons">
+              <button type="button" className="btn btn-dark position-relative">
+                কার্ট
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {/* {cartCount} */}
+                  <span className="visually-hidden">unread messages</span>
                 </span>
               </button>
-            </NavLink >
+            </NavLink>
           </div>
         </div>
       </nav>

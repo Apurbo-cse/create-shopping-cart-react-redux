@@ -1,4 +1,4 @@
-import { ADDED, ADD_TO_CART, REMOVE_FROM_CART} from "./actionTypes";
+import { ADDED, ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } from "./actionTypes";
 
 export const added = (title, category, image, price, qty) => {
   return {
@@ -28,5 +28,11 @@ export const removeFromCart = (productId) => {
     payload: {
       productId,
     },
+  };
+};
+
+export const clearCart = () => {
+  return {
+    type: CLEAR_CART,
   };
 };

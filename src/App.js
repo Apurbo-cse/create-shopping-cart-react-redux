@@ -5,6 +5,7 @@ import './App.css';
 import Navbar from './layouts/include/Navbar';
 import MasterLayout from './layouts/MasterLayout';
 import store from './redux/store';
+import CartPage from './screens/CartPage';
 import HomePage from './screens/HomePage';
 
 
@@ -15,6 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MasterLayout />}>
           <Route index path="/" element={<HomePage />} />
+
+          <Route  path="/cart" element={<CartPage />} />
         </Route>
       </Routes>
     </Provider>

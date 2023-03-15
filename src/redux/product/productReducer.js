@@ -1,5 +1,4 @@
-
-import { ADDED, ADD_TO_CART, REMOVE_FROM_CART,  } from "./actionTypes";
+import { ADDED, ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART } from "./actionTypes";
 import initialState from "./initialState";
 
 const nextProductId = (products) => {
@@ -7,7 +6,7 @@ const nextProductId = (products) => {
   return maxId + 1;
 };
 
-const productReducer = (state = initialState, action) => {
+const productReducer = (state = initialState.products, action) => {
   switch (action.type) {
     case ADDED:
       return [
@@ -21,17 +20,36 @@ const productReducer = (state = initialState, action) => {
           qty: action.payload.qty,
         },
       ];
-
     case ADD_TO_CART:
-      return state.map((product) =>
-        product.id === action.payload.id ? { ...product, qty: product.qty - 1 } : product
-      );
-
+      return state.map((product) => {
+        if (product.id === action.payload.productId) {
+          return {
+            ...product,
+            qty: product.qty - 1,
+            cartQty: product.cartQty + 1,
+          };
+        } else {
+          return product;
+        }
+      });
     case REMOVE_FROM_CART:
-      return state.map((product) =>
-        product.id === action.payload.id ? { ...product, qty: product.qty + 1 } : product
-      );
-
+      return state.map((product) => {
+        if (product.id === action.payload.productId) {
+          return {
+            ...product,
+            qty: product.qty + 1,
+            cartQty: product.cartQty - 1,
+          };
+        } else {
+          return product;
+        }
+      });
+    case CLEAR_CART:
+      return state.map((product) => ({
+        ...product,
+        qty: product.qty + product.cartQty,
+        cartQty: 0,
+      }));
     default:
       return state;
   }
