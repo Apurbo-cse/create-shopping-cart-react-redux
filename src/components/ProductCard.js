@@ -1,16 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/product/actions";
 
 const ProductCard = ({product}) => {
 
- const dispatch = useDispatch();
  const {title,category, image, qty} = product;
 
- const handleAddToCart = () => {
-   dispatch(addToCart(product));
- }
   return (
   <>
     <div class="col-md-3 mb-3">
@@ -21,7 +15,7 @@ const ProductCard = ({product}) => {
           <div><small className="text-muted">{category}</small></div>
           <div><small className="text-muted">QTY {qty}</small></div>
         </div>
-        <button class="btn btn-danger mt-2" onClick={handleAddToCart}>Add to cart</button>
+        <button class="btn btn-danger mt-2" >Add to cart</button>
       </div>
     </div>
   </>

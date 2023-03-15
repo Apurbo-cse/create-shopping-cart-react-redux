@@ -64,7 +64,7 @@ const Create = () => {
             <input
               type="number"
               className="form-control"
-              placeholder="Enter price"
+              placeholder="0"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
@@ -76,7 +76,7 @@ const Create = () => {
             <input
               type="number"
               className="form-control"
-              placeholder="Enter a qty"
+              placeholder="0"
               value={qty}
               onChange={(e) => setQty(e.target.value)}
             />
