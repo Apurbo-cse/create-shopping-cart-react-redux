@@ -6,7 +6,7 @@ import { addToCart } from "../redux/product/actions";
 const ProductCard = ({product}) => {
   const dispatch = useDispatch();
 
-  const { title, category, image, qty, id } = product;
+  const { title, category, image, qty } = product;
 
   const handleAddToCart = () => {
     if (product.qty > 0) {
