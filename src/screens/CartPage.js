@@ -1,66 +1,56 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
 import CartItem from "../components/CartItem";
+import { removeFromCart } from "../redux/product/actions";
 
 const CartPage = () => {
-  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const cartProducts = useSelector((state) =>
+    state.products.filter((product) => product.cartQty > 0)
+  );
 
-  // Filter products that have been added to the cart
-  const cartProducts = products.filter((product) => product.cartQty > 0);
+  const handleRemoveFromCart = (productId) => {
+    dispatch(removeFromCart(productId));
+  };
 
   return (
-    <div className="container py-5">
-      {cartProducts.length > 0 ? (
-        <div className="row">
-          <div className="col-12 mb-4">
-            <h1 className="display-4">Shopping Cart</h1>
-          </div>
-          <div className="col-12 col-md-8">
+    <div className="container mt-5">
+      <div className="row">
+        {cartProducts.length > 0 ? (
+          <div className="col-md-8">
             {cartProducts.map((product) => (
-              <CartItem key={product.id} product={product} />
+              <CartItem
+                key={product.id}
+                product={product}
+                onRemove={handleRemoveFromCart}
+              />
             ))}
           </div>
-          <div className="col-12 col-md-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Order Summary</h5>
-                <hr />
-                <p className="card-text">
-                  Total Items:{" "}
-                  <span className="fw-bold">{cartProducts.length}</span>
-                </p>
-                <p className="card-text">
-                  Total Quantity:{" "}
-                  <span className="fw-bold">
-                    {cartProducts.reduce(
-                      (totalQty, product) => totalQty + product.cartQty,
-                      0
-                    )}
-                  </span>
-                </p>
-                <p className="card-text">
-                  Total Price:{" "}
-                  <span className="fw-bold">
-                    $
-                    {cartProducts
-                      .reduce(
-                        (totalPrice, product) =>
-                          totalPrice + product.cartQty * product.price,
-                        0
-                      )
-                      .toFixed(2)}
-                  </span>
-                </p>
-                <button className="btn btn-primary">Checkout</button>
-              </div>
+        ) : (
+          <h3 className="text-center">Your cart is empty!</h3>
+        )}
+
+        <div className="col-md-4">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Cart Summary</h5>
+              <p className="card-text">
+                Total Items:{" "}
+                {cartProducts.reduce((acc, curr) => acc + curr.cartQty, 0)}
+              </p>
+              <p className="card-text">
+                Total Price: $
+                {cartProducts.reduce(
+                  (acc, curr) => acc + curr.price * curr.cartQty,
+                  0
+                )}
+              </p>
+              <button className="btn btn-primary">Checkout</button>
             </div>
           </div>
         </div>
-      ) : (
-        <div className="text-center">
-          <h1 className="display-4">Your Cart is Empty</h1>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

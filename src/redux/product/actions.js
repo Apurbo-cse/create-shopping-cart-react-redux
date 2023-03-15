@@ -1,4 +1,4 @@
-import { ADDED, ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } from "./actionTypes";
+import { ADDED, ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART, INCREMENT, DECREMENT } from "./actionTypes";
 
 export const added = (title, category, image, price, qty) => {
   return {
@@ -25,6 +25,24 @@ export const addToCart = (productId) => {
 export const removeFromCart = (productId) => {
   return {
     type: REMOVE_FROM_CART,
+    payload: {
+      productId,
+    },
+  };
+};
+
+export const increment = (productId) => {
+  return {
+    type: INCREMENT,
+    payload: {
+      productId,
+    },
+  };
+};
+
+export const decrement = (productId) => {
+  return {
+    type: DECREMENT,
     payload: {
       productId,
     },
