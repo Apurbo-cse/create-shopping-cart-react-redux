@@ -24,34 +24,34 @@ const Create = () => {
     <div class="col-md-3 mb-3">
       <form class="card w-100 p-3" onSubmit={submitHandler}>
         <label htmlFor="" className="text-muted">
-          Title
+          পণ্যের নাম
         </label>
         <input
           type="text"
           className="form-control"
-          placeholder="Enter a title"
+          placeholder="নাম লিখুন"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
 
         <label htmlFor="" className="text-muted mt-2">
-          Category
+          ক্যাটাগরি
         </label>
         <input
           type="text"
           className="form-control"
-          placeholder="Enter a category"
+          placeholder="ক্যাটাগরি লিখুন"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
 
         <label htmlFor="" className="text-muted mt-2">
-          Image
+          ছবি
         </label>
         <input
           type="text"
           className="form-control"
-          placeholder="Enter a image"
+          placeholder="ছবি লিংক লিখুন"
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
@@ -59,7 +59,7 @@ const Create = () => {
         <div className="d-flex justify-content-between">
           <div className="col-6">
             <label htmlFor="" className="text-muted mt-2">
-              Price
+              মূল্য
             </label>
             <input
               type="number"
@@ -71,7 +71,7 @@ const Create = () => {
           </div>
           <div className="col-6">
             <label htmlFor="" className="text-muted mt-2">
-              QTY
+              পরিমাণ
             </label>
             <input
               type="number"
@@ -84,7 +84,7 @@ const Create = () => {
         </div>
 
         <button type="submit" className="btn  btn-warning w-50 mt-3">
-          Save
+          সংরক্ষণ করুন
         </button>
       </form>
     </div>
