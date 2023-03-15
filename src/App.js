@@ -7,6 +7,7 @@ import MasterLayout from './layouts/MasterLayout';
 import store from './redux/store';
 import CartPage from './screens/CartPage';
 import HomePage from './screens/HomePage';
+import ProductPage from './screens/ProductPage';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MasterLayout />}>
           <Route index path="/" element={<HomePage />} />
+          <Route  path="/products" element={<ProductPage />} />
 
           <Route  path="/cart" element={<CartPage />} />
         </Route>

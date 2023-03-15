@@ -33,6 +33,7 @@ const productReducer = (state = initialState.products, action) => {
           return product;
         }
       });
+      
     case REMOVE_FROM_CART:
       return state.map((product) => {
         if (product.id === action.payload.productId) {

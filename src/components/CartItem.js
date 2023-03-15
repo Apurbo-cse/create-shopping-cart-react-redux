@@ -5,7 +5,7 @@ import { removeFromCart, increment, decrement } from "../redux/product/actions";
 const CartItem = ({ product }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(product.cartQty);
-
+  const { qty } = product;
   const handleRemoveFromCart = () => {
     dispatch(removeFromCart(product.id));
   };
@@ -15,14 +15,14 @@ const CartItem = ({ product }) => {
     setQuantity(quantity + 1);
   };
 
-  
-
   const handleDecrement = () => {
     if (quantity > 1) {
       dispatch(decrement(product.id));
       setQuantity(quantity - 1);
     }
   };
+
+  console.log("first", product.qty);
 
   return (
     <>
@@ -35,9 +35,20 @@ const CartItem = ({ product }) => {
           <small className="m-0 px-2 text-muted">{product.category}</small>
         </div>
         <div className="col-md-4 ">
-          <span className="btn mx-2 btn-danger py-1  " onClick={handleDecrement}>-</span>
+          <span className="btn mx-2 btn-danger py-1" onClick={handleDecrement}>
+            -
+          </span>
           <span className="border-1 border-warning p-2 ">{quantity}</span>
-          <span className="btn mx-2 btn-success py-1" onClick={handleIncrement}>+</span>
+          {product.qty !== 0 ? (
+            <span
+              className="btn mx-2 btn-success py-1"
+              onClick={handleIncrement}
+            >
+              +
+            </span>
+          ) : (
+            <button className="btn mx-2 btn-success py-1" title="Stock empty">+</button>
+          )}
         </div>
         <div className="col-md-2 ">
           <p className="m-0 px-2 text-muted">{product.price * quantity}</p>
