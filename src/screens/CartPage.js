@@ -17,19 +17,24 @@ const CartPage = () => {
   return (
     <div className="container mt-5">
       <div className="row">
-        {cartProducts.length > 0 ? (
+       
           <div className="col-md-8">
-            {cartProducts.map((product) => (
-              <CartItem
-                key={product.id}
-                product={product}
-                onRemove={handleRemoveFromCart}
-              />
-            ))}
+          {cartProducts.length > 0 ? (
+            <>
+              {cartProducts.map((product) => (
+                <CartItem
+                  key={product.id}
+                  product={product}
+                  onRemove={handleRemoveFromCart}
+                />
+              ))}
+            </>
+              ) : (
+                <h3 className="text-center">Your cart is empty!</h3>
+              )}
+
           </div>
-        ) : (
-          <h3 className="text-center">Your cart is empty!</h3>
-        )}
+      
 
         <div className="col-md-4">
           <div className="card">
